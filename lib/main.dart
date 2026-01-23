@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const MyHomePage(title: 'Random Number Generator'),
-
     );
   }
 }
@@ -44,9 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor : Color(0xFFDBC6EB),
+      backgroundColor: Color(0xFFDBC6EB),
       appBar: AppBar(
-        leading: Icon(Icons.house, size: 25,),
+        leading: Icon(Icons.house, size: 25),
         backgroundColor: Color(0xFFFFC0CB),
         title: Text(widget.title),
       ),
@@ -54,7 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            Text('$_randomNum', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,),
+            Text(
+              '$_randomNum',
+              style: Theme.of(context).textTheme.headlineMedium,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
@@ -62,12 +65,34 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Padding(padding: EdgeInsets.only(left: 28), child: SizedBox(width: double.infinity, child: FloatingActionButton( onPressed: generateRandomNumber, tooltip: 'Increment', child: Text('Generate')))),
+            Padding(
+              padding: EdgeInsets.only(left: 28),
+              child: SizedBox(
+                width: double.infinity,
+                child: FloatingActionButton(
+                  onPressed: generateRandomNumber,
+                  tooltip: 'Increment',
+                  child: Text('Generate'),
+                ),
+              ),
+            ),
             SizedBox(height: 20),
-            Padding(padding: EdgeInsets.only(left : 28), child: SizedBox(width : double.infinity, child : FloatingActionButton( onPressed: null, tooltip: 'Increment', child: Text('View Statistics', textAlign: TextAlign.center))))
-        ,]
+            Padding(
+              padding: EdgeInsets.only(left: 28),
+              child: SizedBox(
+                width: double.infinity,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    null;
+                  },
+                  tooltip: 'Increment',
+                  child: Text('View Statistics', textAlign: TextAlign.center),
+                ),
+              ),
+            ),
+          ],
         ),
-      )
+      ),
     );
   }
 }
