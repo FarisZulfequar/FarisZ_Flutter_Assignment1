@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +32,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _randomNum = 0;
+
+  void generateRandomNumber() {
+    setState(() {
+      Random randomObject = new Random();
+    _randomNum = 1 + randomObject.nextInt(9);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            Text('0', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,),
+            Text('$_randomNum', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,),
           ],
         ),
       ),
@@ -53,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Padding(padding: EdgeInsets.only(left: 28), child: SizedBox(width: double.infinity, child: FloatingActionButton( onPressed: null, tooltip: 'Increment', child: Text('Generate')))),
+            Padding(padding: EdgeInsets.only(left: 28), child: SizedBox(width: double.infinity, child: FloatingActionButton( onPressed: generateRandomNumber, tooltip: 'Increment', child: Text('Generate')))),
             SizedBox(height: 20),
             Padding(padding: EdgeInsets.only(left : 28), child: SizedBox(width : double.infinity, child : FloatingActionButton( onPressed: null, tooltip: 'Increment', child: Text('View Statistics', textAlign: TextAlign.center))))
         ,]
