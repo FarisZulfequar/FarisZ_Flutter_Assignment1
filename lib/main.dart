@@ -1,3 +1,4 @@
+import 'package:farisz_flutter_assignment1/secondScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void generateRandomNumber() {
     setState(() {
       Random randomObject = new Random();
-    _randomNum = 1 + randomObject.nextInt(9);
+        _randomNum = 1 + randomObject.nextInt(9);
     });
   }
 
