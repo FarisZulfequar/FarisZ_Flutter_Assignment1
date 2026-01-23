@@ -45,15 +45,20 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            Text('0', style: Theme.of(context).textTheme.headlineMedium),
+            Text('0', style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(padding: EdgeInsets.only(left: 28), child: SizedBox(width: double.infinity, child: FloatingActionButton( onPressed: null, tooltip: 'Increment', child: Text('Generate')))),
+            SizedBox(height: 20),
+            Padding(padding: EdgeInsets.only(left : 28), child: SizedBox(width : double.infinity, child : FloatingActionButton( onPressed: null, tooltip: 'Increment', child: Text('View Statistics', textAlign: TextAlign.center))))
+        ,]
+        ),
+      )
     );
   }
 }
