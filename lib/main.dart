@@ -29,9 +29,27 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> 
+    with SingleTickerProviderStateMixin {
   int _randomNum = 0;
+  late AnimationController _controller;
 
+  @override 
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+    );
+    
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+  
   void generateRandomNumber() {
     setState(() {
       Random randomObject = new Random();
@@ -52,10 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: .center,
           children: [
-            Text(
-              '$_randomNum',
-              style: Theme.of(context).textTheme.headlineMedium,
-              textAlign: TextAlign.center,
+            RotationTransition(
+              turns: _controller,
+              child:
+                
+                Text(
+                  '$_randomNum',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                  textAlign: TextAlign.center,
+                ),
             ),
           ],
         ),
@@ -69,9 +92,13 @@ class _MyHomePageState extends State<MyHomePage> {
               child: SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
-                  onPressed: generateRandomNumber,
-                  tooltip: 'Increment',
-                  child: Text('Generate'),
+                  onPressed: () {
+                    generateRandomNumber();  
+                    _controller.duration = const Duration(milliseconds: 300);
+                    _controller.reset();   // back to 0.0
+                    _controller.forward();},
+                    tooltip: 'Increment',
+                    child: Text('Generate'),
                 ),
               ),
             ),
