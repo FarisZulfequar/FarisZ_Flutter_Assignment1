@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'FarisZ_Flutter_Assignment_1',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const MyHomePage(title: 'Random Number Generator'),
+      home: const MyHomePage(title: "Random Number Generator"),
     );
   }
 }
@@ -29,19 +29,16 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> 
+class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   int _randomNum = 0;
   late AnimationController _controller;
 
-  @override 
+  @override
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-      vsync: this,
-    );
-    
+    _controller = AnimationController(vsync: this);
   }
 
   @override
@@ -49,22 +46,23 @@ class _MyHomePageState extends State<MyHomePage>
     _controller.dispose();
     super.dispose();
   }
-  
+
   void generateRandomNumber() {
     setState(() {
-      Random randomObject = new Random();
-        _randomNum = 1 + randomObject.nextInt(9);
+      Random randomObject = Random();
+      _randomNum = 1 + randomObject.nextInt(9);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFDBC6EB),
+      backgroundColor: Color(0xFF2196F4),
       appBar: AppBar(
-        leading: Icon(Icons.house, size: 25),
-        backgroundColor: Color(0xFFFFC0CB),
-        title: Text(widget.title),
+        leading: Icon(Icons.home_outlined, size: 25),
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: Color(0xFF147CD4),
+        title: Text(widget.title, style: TextStyle(fontSize: 20, color: Colors.white)),
       ),
       body: Center(
         child: Column(
@@ -72,13 +70,11 @@ class _MyHomePageState extends State<MyHomePage>
           children: [
             RotationTransition(
               turns: _controller,
-              child:
-                
-                Text(
-                  '$_randomNum',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                  textAlign: TextAlign.center,
-                ),
+              child: Text(
+                '$_randomNum',
+                style: TextStyle(fontSize: 60, color: Colors.white, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),
@@ -92,13 +88,15 @@ class _MyHomePageState extends State<MyHomePage>
               child: SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
-                    generateRandomNumber();  
+                    generateRandomNumber();
                     _controller.duration = const Duration(milliseconds: 300);
-                    _controller.reset();   // back to 0.0
-                    _controller.forward();},
-                    tooltip: 'Increment',
-                    child: Text('Generate'),
+                    _controller.reset(); // back to 0.0
+                    _controller.forward();
+                  },
+                  tooltip: 'Increment',
+                  child: Text('Generate',  style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
               ),
             ),
@@ -108,11 +106,17 @@ class _MyHomePageState extends State<MyHomePage>
               child: SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
                     null;
                   },
                   tooltip: 'Increment',
-                  child: Text('View Statistics', textAlign: TextAlign.center),
+                  child: Text(
+                    'View Statistics',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    
+                  ),
                 ),
               ),
             ),

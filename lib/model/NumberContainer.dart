@@ -1,7 +1,7 @@
 class NumberContainer {
-  static List<int> _numberList = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  static final List<int> _numberList = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  NumberContainer() {}
+  NumberContainer();
 
   List<int> getNumberList() {
       return _numberList;
