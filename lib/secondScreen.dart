@@ -63,6 +63,49 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
           ),
         ),
       ),
+      floatingActionButton: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 28),
+              child: SizedBox(
+                width: double.infinity,
+                child: FloatingActionButton(
+                  backgroundColor: Color(0xFF147CD4),
+                  onPressed: () {
+                  
+                  },
+                  tooltip: 'Reset',
+                  child: Text(
+                    'Reset',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Padding(
+              padding: EdgeInsets.only(left: 28),
+              child: SizedBox(
+                width: double.infinity,
+                child: FloatingActionButton(
+                  backgroundColor: Color(0xFF147CD4),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  tooltip: 'Go Back',
+                  child: Text(
+                    'Back To Statistics',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
