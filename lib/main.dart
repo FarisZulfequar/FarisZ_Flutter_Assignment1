@@ -127,7 +127,11 @@ class _MyHomePageState extends State<MyHomePage>
                 child: FloatingActionButton(
                   backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
-                    null;
+                    Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const StatisticPageRoute(),
+                      ),
+                    );
                   },
                   tooltip: 'Increment',
                   child: Text(

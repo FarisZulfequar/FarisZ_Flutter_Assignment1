@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({super.key});
+class StatisticPageRoute extends StatelessWidget {
+  const StatisticPageRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,10 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFDBC6EB),
+      backgroundColor: Color(0xFF2196F4),
       appBar: AppBar(
         leading: Icon(Icons.house_outlined, size: 25),
-        backgroundColor: Color(0xFFFFC0CB),
+        backgroundColor: Color(0xFF147CD4),
         title: Text(widget.title, style: TextStyle(fontSize: 20, color: Colors.white)),
       ),
       body: Center(
@@ -41,23 +41,23 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 1", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white)),]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 1", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white)),]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 2", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 2", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 3", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 3", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 4", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 4", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 5", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 5", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 6", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 6", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 7", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 7", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 8", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 8", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               SizedBox(height: 20),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 9", style: TextStyle(fontSize: 20),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))])
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 9", style: TextStyle(fontSize: 20, color: Colors.white),), Text("0 times", style: TextStyle(fontSize: 20, color: Colors.white))])
             ],
           ),
         ),
