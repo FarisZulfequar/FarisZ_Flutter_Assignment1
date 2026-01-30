@@ -1,6 +1,7 @@
 import 'package:farisz_flutter_assignment1/secondScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -48,9 +49,17 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   void generateRandomNumber() {
-    setState(() {
-      Random randomObject = Random();
-      _randomNum = 1 + randomObject.nextInt(9);
+    int counter = 0;
+    Timer.periodic(Duration(milliseconds: 100), (timer) {
+      if (counter == 6) {
+        timer.cancel();
+      } else {
+        setState(() {
+          counter++;
+          Random randomObject = Random();
+          _randomNum = 1 + randomObject.nextInt(9);
+        });
+      }
     });
   }
 
@@ -62,7 +71,10 @@ class _MyHomePageState extends State<MyHomePage>
         leading: Icon(Icons.home_outlined, size: 25),
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color(0xFF147CD4),
-        title: Text(widget.title, style: TextStyle(fontSize: 20, color: Colors.white)),
+        title: Text(
+          widget.title,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
       ),
       body: Center(
         child: Column(
@@ -72,7 +84,11 @@ class _MyHomePageState extends State<MyHomePage>
               turns: _controller,
               child: Text(
                 '$_randomNum',
-                style: TextStyle(fontSize: 60, color: Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 60,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -91,12 +107,15 @@ class _MyHomePageState extends State<MyHomePage>
                   backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
                     generateRandomNumber();
-                    _controller.duration = const Duration(milliseconds: 300);
+                    _controller.duration = const Duration(milliseconds: 600);
                     _controller.reset(); // back to 0.0
                     _controller.forward();
                   },
                   tooltip: 'Increment',
-                  child: Text('Generate',  style: TextStyle(color: Colors.white, fontSize: 18)),
+                  child: Text(
+                    'Generate',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
                 ),
               ),
             ),
@@ -115,7 +134,6 @@ class _MyHomePageState extends State<MyHomePage>
                     'View Statistics',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 18),
-                    
                   ),
                 ),
               ),
