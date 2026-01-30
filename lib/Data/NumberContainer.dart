@@ -8,36 +8,33 @@ class NumberContainer {
   }
 
   void increaseGeneratedNumberTimes(int generatedNum) {
-    switch (generatedNum - 1) {
-      case 0:
+    switch (generatedNum) {
+      case 1:
         _numberList[0] += 1;
         break;
-      case 1:
+      case 2:
         _numberList[1] += 1;
         break;
-      case 2:
+      case 3:
         _numberList[2] += 1;
         break;
-      case 3:
+      case 4:
         _numberList[3] += 1;
         break;
-      case 4:
+      case 5:
         _numberList[4] += 1;
         break;
-      case 5:
+      case 6:
         _numberList[5] += 1;
         break;
-      case 6:
+      case 7:
         _numberList[6] += 1;
         break;
-      case 7:
+      case 8:
         _numberList[7] += 1;
         break;
-      case 8:
-        _numberList[8] += 1;
-        break;
       default:
-        _numberList[9] += 1;
+        _numberList[8] += 1;
         break;
     }
   }
