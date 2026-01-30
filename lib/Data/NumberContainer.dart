@@ -1,10 +1,16 @@
 class NumberContainer {
-  static final List<int> _numberList = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  static List<int> _numberList = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   NumberContainer();
 
   List<int> getNumberList() {
       return _numberList;
+  }
+
+  void resetNumberList() {
+    for (int number = 0; number < _numberList.length; number++) {
+        _numberList[number] = 0;
+    }
   }
 
   void increaseGeneratedNumberTimes(int generatedNum) {

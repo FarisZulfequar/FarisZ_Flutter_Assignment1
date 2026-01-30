@@ -1,3 +1,4 @@
+import 'package:farisz_flutter_assignment1/Data/NumberContainer.dart';
 import 'package:farisz_flutter_assignment1/secondScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -34,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   int _randomNum = 0;
   late AnimationController _controller;
+  NumberContainer _numberContainer = NumberContainer();
 
   @override
   void initState() {
@@ -53,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage>
     Timer.periodic(Duration(milliseconds: 100), (timer) {
       if (counter == 6) {
         timer.cancel();
+        _numberContainer.increaseGeneratedNumberTimes(_randomNum);
       } else {
         setState(() {
           counter++;
