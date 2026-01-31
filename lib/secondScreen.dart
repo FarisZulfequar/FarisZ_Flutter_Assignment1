@@ -1,20 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:farisz_flutter_assignment1/Data/NumberContainer.dart';
 
-class StatisticPageRoute extends StatelessWidget {
-  const StatisticPageRoute({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'FarisZ_Flutter_Assignment_1',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const MyStatisticPage(title: "Statistics",),
-    );
-  }
-}
-
 class MyStatisticPage extends StatefulWidget {
   final String title;
   const MyStatisticPage({super.key, required this.title});
@@ -94,6 +80,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
               child: SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  heroTag: 'resetBtn',
                   backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
                     _resetNumberContainerList();
@@ -112,6 +99,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
               child: SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  heroTag: 'BackToGenerateBtn',
                   backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
                     Navigator.of(context).pop();

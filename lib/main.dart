@@ -107,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage>
               child: SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  heroTag: 'generateBtn', 
                   backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
                     generateRandomNumber();
@@ -128,11 +129,13 @@ class _MyHomePageState extends State<MyHomePage>
               child: SizedBox(
                 width: double.infinity,
                 child: FloatingActionButton(
+                  heroTag: 'statsBtn',
                   backgroundColor: Color(0xFF147CD4),
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (context) => const StatisticPageRoute(),
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const MyStatisticPage(title: "Statistics"),
                       ),
                     );
                   },
