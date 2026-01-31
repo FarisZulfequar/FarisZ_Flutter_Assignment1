@@ -24,7 +24,8 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
     return Scaffold(
       backgroundColor: Color(0xFF2196F4),
       appBar: AppBar(
-        leading: Icon(Icons.house_outlined, size: 25),
+        leading: Icon(Icons.arrow_back, size: 25),
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Color(0xFF147CD4),
         title: Text(widget.title, style: TextStyle(fontSize: 20, color: Colors.white)),
       ),
@@ -62,6 +63,10 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 7", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[6]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 8", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[7]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
