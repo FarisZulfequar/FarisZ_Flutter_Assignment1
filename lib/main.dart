@@ -3,6 +3,7 @@ import 'dart:math';
 import 'dart:async';
 
 int _randomNum = 0;
+int _currentSession = 0;
 const textColor = Colors.white;
 const normalFontSize = 20.0;
 const appBarColor = Color(0xFF147CD3);
@@ -50,7 +51,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
-  int _randomNum = 0;
   late AnimationController _controller;
   final NumberContainer _numberContainer = NumberContainer();
 
@@ -67,11 +67,16 @@ class _MyHomePageState extends State<MyHomePage>
   }
 
   void generateRandomNumber() {
+    _currentSession++;
+    int _currentSessionID = _currentSession;
     int counter = 0;
     Timer.periodic(Duration(milliseconds: 100), (timer) {
       if (counter == 6) {
         timer.cancel();
+
+        if (_currentSessionID == _currentSession) {
         _numberContainer.increaseGeneratedNumberTimes(_randomNum);
+      }
       } else {
         setState(() {
           counter++;
