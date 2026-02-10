@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:async';
 
+const textColor = Colors.white;
+const normalFontSize = 20.0;
+const appBarColor = Color(0xFF147CD3);
+const bodyAppColor = Color(0xFF2196F3);
+const buttonAppColor = Color(0xFF147CD3);
 void main() {
   runApp(const MyApp());
 }
@@ -36,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   int _randomNum = 0;
   late AnimationController _controller;
-  NumberContainer _numberContainer = NumberContainer();
+  final NumberContainer _numberContainer = NumberContainer();
 
   @override
   void initState() {
@@ -70,14 +75,14 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2196F4),
+      backgroundColor: bodyAppColor,
       appBar: AppBar(
         leading: Icon(Icons.home_outlined, size: 25),
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Color(0xFF147CD4),
+        iconTheme: IconThemeData(color: textColor),
+        backgroundColor: appBarColor,
         title: Text(
           widget.title,
-          style: TextStyle(fontSize: 20, color: Colors.white),
+          style: TextStyle(fontSize: normalFontSize, color: textColor),
         ),
       ),
       body: Center(
@@ -109,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage>
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'generateBtn', 
-                  backgroundColor: Color(0xFF147CD4),
+                  backgroundColor: buttonAppColor,
                   onPressed: () {
                     generateRandomNumber();
                     _controller.duration = const Duration(milliseconds: 600);
@@ -119,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage>
                   tooltip: 'Increment',
                   child: Text(
                     'Generate',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: textColor, fontSize: normalFontSize),
                   ),
                 ),
               ),
@@ -131,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage>
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'statsBtn',
-                  backgroundColor: Color(0xFF147CD4),
+                  backgroundColor: buttonAppColor,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -144,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage>
                   child: Text(
                     'View Statistics',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: textColor, fontSize: normalFontSize),
                   ),
                 ),
               ),
@@ -168,7 +173,7 @@ class MyStatisticPage extends StatefulWidget {
 }
 
 class _MyStatisticPageState extends State<MyStatisticPage> {
-  NumberContainer _numberContainer = NumberContainer();
+  final NumberContainer _numberContainer = NumberContainer();
 
 
   void _resetNumberContainerList() {
@@ -180,12 +185,12 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF2196F4),
+      backgroundColor: bodyAppColor,
       appBar: AppBar(
         leading: Icon(Icons.arrow_back, size: 25),
-        iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Color(0xFF147CD4),
-        title: Text(widget.title, style: TextStyle(fontSize: 20, color: Colors.white)),
+        iconTheme: IconThemeData(color: textColor),
+        backgroundColor: appBarColor,
+        title: Text(widget.title, style: TextStyle(fontSize: normalFontSize, color: textColor)),
       ),
       body: Center(
         widthFactor: 100,
@@ -196,39 +201,39 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 1", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[0]} times", style: TextStyle(fontSize: 20, color: Colors.white)),]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 1", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[0]} times", style: TextStyle(fontSize: normalFontSize, color: textColor)),]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 2", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[1]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 2", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[1]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 3", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[2]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 3", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[2]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 4", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[3]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 4", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[3]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 5", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[4]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 5", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[4]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 6", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[5]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 6", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[5]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 7", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[6]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 7", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[6]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 8", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[7]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 8", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[7]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 9", style: TextStyle(fontSize: 20, color: Colors.white),), Text("${_numberContainer.getNumberList()[8]} times", style: TextStyle(fontSize: 20, color: Colors.white))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 9", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[8]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               )
             ],
           ),
@@ -244,14 +249,14 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'resetBtn',
-                  backgroundColor: Color(0xFF147CD4),
+                  backgroundColor: buttonAppColor,
                   onPressed: () {
                     _resetNumberContainerList();
                   },
                   tooltip: 'Reset',
                   child: Text(
                     'Reset',
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: textColor, fontSize: normalFontSize),
                   ),
                 ),
               ),
@@ -263,7 +268,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
                 width: double.infinity,
                 child: FloatingActionButton(
                   heroTag: 'BackToGenerateBtn',
-                  backgroundColor: Color(0xFF147CD4),
+                  backgroundColor: buttonAppColor,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -271,7 +276,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
                   child: Text(
                     'Back To Statistics',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    style: TextStyle(color: textColor, fontSize: normalFontSize),
                   ),
                 ),
               ),
@@ -287,7 +292,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
 // NumberContainer class
 // -------------------------------
 class NumberContainer {
-  static List<int> _numberList = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  static final List<int> _numberList = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   NumberContainer();
 
