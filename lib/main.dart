@@ -88,6 +88,7 @@ class _MyHomePageState extends State<MyHomePage>
     return Scaffold(
       backgroundColor: bodyAppColor,
       appBar: AppBar(
+        centerTitle: false,
         leading: Icon(Icons.home_outlined, size: 25),
         iconTheme: IconThemeData(color: textColor),
         backgroundColor: appBarColor,
@@ -103,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage>
             RotationTransition(
               turns: _controller,
               child: Text(
-                '$_randomNum',
+                _randomNum == 0 ? '' : '$_randomNum',
                 style: TextStyle(
                   fontSize: 60,
                   color: Colors.white,
@@ -194,7 +195,13 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
     return Scaffold(
       backgroundColor: bodyAppColor,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back, size: 25),
+        centerTitle: false,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, size: 25),
+          onPressed: () {
+              Navigator.of(context).pop(context);
+          },
+        ),
         iconTheme: IconThemeData(color: textColor),
         backgroundColor: appBarColor,
         title: Text(widget.title, style: TextStyle(fontSize: normalFontSize, color: textColor)),
