@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:async';
 
+int _randomNum = 0;
 const textColor = Colors.white;
 const normalFontSize = 20.0;
 const appBarColor = Color(0xFF147CD3);
@@ -16,7 +17,6 @@ final ButtonStyle _elevatedButtonStyle = ElevatedButton.styleFrom(
     fontSize: normalFontSize,
   )
 );
-
 
 void main() {
   runApp(const MyApp());
@@ -57,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(vsync: this);
   }
 
@@ -183,7 +182,6 @@ class MyStatisticPage extends StatefulWidget {
 class _MyStatisticPageState extends State<MyStatisticPage> {
   final NumberContainer _numberContainer = NumberContainer();
 
-
   void _resetNumberContainerList() {
     setState(() {
       _numberContainer.resetNumberList();
@@ -215,39 +213,39 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 1", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[0]} times", style: TextStyle(fontSize: normalFontSize, color: textColor)),]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 1", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[1]} times", style: TextStyle(fontSize: normalFontSize, color: textColor)),]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 2", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[1]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 2", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[2]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 3", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[2]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 3", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[3]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 4", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[3]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 4", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[4]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 5", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[4]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 5", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[5]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 6", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[5]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 6", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[6]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 7", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[6]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 7", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[7]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 8", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[7]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 8", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[8]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 9", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberList()[8]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Number 9", style: TextStyle(fontSize: normalFontSize, color: textColor),), Text("${_numberContainer.getNumberMap()[9]} times", style: TextStyle(fontSize: normalFontSize, color: textColor))]),
               )
             ],
           ),
@@ -302,49 +300,27 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
 // NumberContainer class
 // -------------------------------
 class NumberContainer {
-  static final List<int> _numberList = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-
+  static final Map<int, int> _numberMap = {
+    1: 0, 2: 0, 3: 0,
+    4: 0, 5: 0, 6: 0, 
+    7: 0, 8: 0, 9: 0,
+    };
+    
   NumberContainer();
 
-  List<int> getNumberList() {
-      return _numberList;
+  Map<int, int> getNumberMap() {
+      return _numberMap;
   }
 
   void resetNumberList() {
-    for (int number = 0; number < _numberList.length; number++) {
-        _numberList[number] = 0;
+    for (int number = 0; number < _numberMap.length; number++) {
+        _numberMap[number] = 0;
     }
   }
 
   void increaseGeneratedNumberTimes(int generatedNum) {
-    switch (generatedNum) {
-      case 1:
-        _numberList[0] += 1;
-        break;
-      case 2:
-        _numberList[1] += 1;
-        break;
-      case 3:
-        _numberList[2] += 1;
-        break;
-      case 4:
-        _numberList[3] += 1;
-        break;
-      case 5:
-        _numberList[4] += 1;
-        break;
-      case 6:
-        _numberList[5] += 1;
-        break;
-      case 7:
-        _numberList[6] += 1;
-        break;
-      case 8:
-        _numberList[7] += 1;
-        break;
-      default:
-        _numberList[8] += 1;
-        break;
+    if (_numberMap.containsKey(generatedNum)) {
+     _numberMap[generatedNum] = (_numberMap[generatedNum] ?? 0) + 1;
     }
   }
 }
