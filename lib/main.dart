@@ -7,6 +7,17 @@ const normalFontSize = 20.0;
 const appBarColor = Color(0xFF147CD3);
 const bodyAppColor = Color(0xFF2196F3);
 const buttonAppColor = Color(0xFF147CD3);
+
+final ButtonStyle _elevatedButtonStyle = ElevatedButton.styleFrom(
+  backgroundColor: buttonAppColor, 
+  foregroundColor: textColor,
+  elevation: 4,
+  textStyle: TextStyle(
+    fontSize: normalFontSize,
+  )
+);
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -112,16 +123,14 @@ class _MyHomePageState extends State<MyHomePage>
               padding: EdgeInsets.only(left: 28),
               child: SizedBox(
                 width: double.infinity,
-                child: FloatingActionButton(
-                  heroTag: 'generateBtn', 
-                  backgroundColor: buttonAppColor,
+                child: ElevatedButton(
+                  style: _elevatedButtonStyle,
                   onPressed: () {
                     generateRandomNumber();
                     _controller.duration = const Duration(milliseconds: 600);
                     _controller.reset(); // back to 0.0
                     _controller.forward();
                   },
-                  tooltip: 'Increment',
                   child: Text(
                     'Generate',
                     style: TextStyle(color: textColor, fontSize: normalFontSize),
@@ -134,9 +143,8 @@ class _MyHomePageState extends State<MyHomePage>
               padding: EdgeInsets.only(left: 28),
               child: SizedBox(
                 width: double.infinity,
-                child: FloatingActionButton(
-                  heroTag: 'statsBtn',
-                  backgroundColor: buttonAppColor,
+                child: ElevatedButton(
+                  style : _elevatedButtonStyle,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -145,7 +153,6 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     );
                   },
-                  tooltip: 'Increment',
                   child: Text(
                     'View Statistics',
                     textAlign: TextAlign.center,
@@ -247,13 +254,11 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
               padding: EdgeInsets.only(left: 28),
               child: SizedBox(
                 width: double.infinity,
-                child: FloatingActionButton(
-                  heroTag: 'resetBtn',
-                  backgroundColor: buttonAppColor,
+                child: ElevatedButton(
+                  style: _elevatedButtonStyle,
                   onPressed: () {
                     _resetNumberContainerList();
                   },
-                  tooltip: 'Reset',
                   child: Text(
                     'Reset',
                     style: TextStyle(color: textColor, fontSize: normalFontSize),
@@ -266,13 +271,11 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
               padding: EdgeInsets.only(left: 28),
               child: SizedBox(
                 width: double.infinity,
-                child: FloatingActionButton(
-                  heroTag: 'BackToGenerateBtn',
-                  backgroundColor: buttonAppColor,
+                child: ElevatedButton(
+                  style: _elevatedButtonStyle,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  tooltip: 'Go Back',
                   child: Text(
                     'Back To Statistics',
                     textAlign: TextAlign.center,
