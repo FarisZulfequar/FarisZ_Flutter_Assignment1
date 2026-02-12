@@ -230,7 +230,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, size: 25),
           onPressed: () {
-              Navigator.of(context).pop(context);
+              Navigator.pop(context, _didReset);
           },
         ),
         iconTheme: IconThemeData(color: textColor),
