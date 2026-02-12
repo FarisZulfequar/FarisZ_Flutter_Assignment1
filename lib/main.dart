@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:async';
 
+
 int _randomNum = 0;
 int _currentSession = 0;
 const textColor = Colors.white;
@@ -10,13 +11,17 @@ const appBarColor = Color(0xFF147CD3);
 const bodyAppColor = Color(0xFF2196F3);
 const buttonAppColor = Color(0xFF147CD3);
 
+// All the following ElevatedButton and its styles was taken from the flutter documentation in the resources.txt file #3
+// Creates a style for the elevated buttos
 final ButtonStyle _elevatedButtonStyle = ElevatedButton.styleFrom(
   backgroundColor: buttonAppColor, 
   foregroundColor: textColor,
   elevation: 4,
   textStyle: TextStyle(
     fontSize: normalFontSize,
-  )
+  ),
+  minimumSize: Size(double.infinity, 55),
+  shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(10))
 );
 
 void main() {
@@ -51,6 +56,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
+  
+  // All AnimationController code was taken from the flutter documentation in the resources.txt file #7
   late AnimationController _controller;
   final NumberContainer _numberContainer = NumberContainer();
 
@@ -68,12 +75,16 @@ class _MyHomePageState extends State<MyHomePage>
 
   void generateRandomNumber() {
     _currentSession++;
+    // This variable signals that each timer has its own unique ID
     int _currentSessionID = _currentSession;
     int counter = 0;
+    // Creates a timer that lasts for 0.1 seconds and runs 6 times
     Timer.periodic(Duration(milliseconds: 100), (timer) {
       if (counter == 6) {
         timer.cancel();
 
+        // Since each timer has its own ID it will compare to the latest timer session, if true, it will increment the generated number
+        // for the statistics page
         if (_currentSessionID == _currentSession) {
         _numberContainer.increaseGeneratedNumberTimes(_randomNum);
       }
@@ -93,7 +104,10 @@ class _MyHomePageState extends State<MyHomePage>
       backgroundColor: bodyAppColor,
       appBar: AppBar(
         centerTitle: false,
-        leading: Icon(Icons.home_outlined, size: 25),
+        leading: IconButton(
+          icon: Icon(Icons.home_outlined, size: 25),
+          onPressed: () {},
+        ),
         iconTheme: IconThemeData(color: textColor),
         backgroundColor: appBarColor,
         title: Text(
@@ -105,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage>
         child: Column(
           mainAxisAlignment: .center,
           children: [
+            // This specfic code was taken from the flutter documentation in the resources.txt file #6
             RotationTransition(
               turns: _controller,
               child: Text(
@@ -128,17 +143,22 @@ class _MyHomePageState extends State<MyHomePage>
               padding: EdgeInsets.only(left: 28),
               child: SizedBox(
                 width: double.infinity,
+                // This specfic code was taken from the flutter documentation in the resources.txt file #2
                 child: ElevatedButton(
                   style: _elevatedButtonStyle,
                   onPressed: () {
                     generateRandomNumber();
+                    // Rotates the Text for 0.6 seconds
                     _controller.duration = const Duration(milliseconds: 600);
                     _controller.reset(); // back to 0.0
                     _controller.forward();
                   },
                   child: Text(
                     'Generate',
-                    style: TextStyle(color: textColor, fontSize: normalFontSize),
+                    style: TextStyle(
+                      color: textColor,
+                      fontSize: normalFontSize,
+                    ),
                   ),
                 ),
               ),
@@ -146,23 +166,28 @@ class _MyHomePageState extends State<MyHomePage>
             SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.only(left: 28),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style : _elevatedButtonStyle,
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const MyStatisticPage(title: "Statistics"),
-                      ),
-                    );
-                  },
-                  child: Text(
-                    'View Statistics',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: textColor, fontSize: normalFontSize),
-                  ),
+              child: ElevatedButton(
+                style: _elevatedButtonStyle,
+                onPressed: () async {
+                   // This specfic code was taken from the flutter documentation in the resources.txt file #1.5
+                   // When the navigation comes back it will get a value of true or false
+                  final didReset = await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const MyStatisticPage(title: "Statistics"),
+                    ),
+                  );
+                  if (didReset == true) {
+                    setState(() {
+                      // Forces the _randomNum to change its state to 0, therefore make the text a empty string
+                      _randomNum = 0;
+                    });
+                  }
+                },
+                child: Text(
+                  'View Statistics',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: textColor, fontSize: normalFontSize),
                 ),
               ),
             ),
@@ -186,10 +211,13 @@ class MyStatisticPage extends StatefulWidget {
 
 class _MyStatisticPageState extends State<MyStatisticPage> {
   final NumberContainer _numberContainer = NumberContainer();
+  bool _didReset = false;
 
   void _resetNumberContainerList() {
     setState(() {
+      // Resets all the numbers to 0
       _numberContainer.resetNumberList();
+      _didReset = true;
     });
   }
 
@@ -215,6 +243,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 100),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            // This specfic code was taken from the flutter documentation in the resources.txt file #2, #4
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -262,9 +291,7 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
           children: [
             Padding(
               padding: EdgeInsets.only(left: 28),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
+             child: ElevatedButton(
                   style: _elevatedButtonStyle,
                   onPressed: () {
                     _resetNumberContainerList();
@@ -274,26 +301,24 @@ class _MyStatisticPageState extends State<MyStatisticPage> {
                     style: TextStyle(color: textColor, fontSize: normalFontSize),
                   ),
                 ),
-              ),
             ),
             SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.only(left: 28),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
+              child: ElevatedButton(
                   style: _elevatedButtonStyle,
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    // This specfic code was taken from the flutter documentation in the resources.txt file #1 and #1.5
+                    // Returns back to the homepage along with a value from the _didReset 
+                    Navigator.pop(context, _didReset);
                   },
                   child: Text(
-                    'Back To Statistics',
+                    'Back To Home',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: textColor, fontSize: normalFontSize),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),
@@ -318,14 +343,39 @@ class NumberContainer {
   }
 
   void resetNumberList() {
-    for (int number = 0; number < _numberMap.length; number++) {
+    for (int number in _numberMap.keys) {
         _numberMap[number] = 0;
     }
+    _randomNum = 0;
   }
 
   void increaseGeneratedNumberTimes(int generatedNum) {
+    // This specfic code was taken from the flutter documentation in the resources.txt file #8
     if (_numberMap.containsKey(generatedNum)) {
      _numberMap[generatedNum] = (_numberMap[generatedNum] ?? 0) + 1;
     }
   }
 }
+
+/*
+
+Some code in the program was copy and pasted and changed slightly or used at references. 
+Each link will be numbered and will be told in the program which link was used:
+
+1. https://docs.flutter.dev/cookbook/navigation/navigation-basics
+
+1.5. https://docs.flutter.dev/cookbook/navigation/returning-data
+
+2. https://api.flutter.dev/flutter/widgets/Padding-class.html
+
+3. https://api.flutter.dev/flutter/material/ButtonStyle-class.html
+
+4. https://api.flutter.dev/flutter/widgets/Row-class.html
+
+6. https://api.flutter.dev/flutter/widgets/RotationTransition-class.html
+
+7. https://api.flutter.dev/flutter/animation/AnimationController-class.html
+
+8. https://api.flutter.dev/flutter/dart-core/Map/containsKey.html
+
+*/

@@ -1,0 +1,18 @@
+Some code in the program was copy and pasted and changed slightly or used at references. 
+Each link will be numbered and will be told in the program which link was used:
+
+1. https://docs.flutter.dev/cookbook/navigation/navigation-basics
+
+1.5. https://docs.flutter.dev/cookbook/navigation/returning-data
+
+2. https://api.flutter.dev/flutter/widgets/Padding-class.html
+
+3. https://api.flutter.dev/flutter/material/ButtonStyle-class.html
+
+4. https://api.flutter.dev/flutter/widgets/Row-class.html
+
+6. https://api.flutter.dev/flutter/widgets/RotationTransition-class.html
+
+7. https://api.flutter.dev/flutter/animation/AnimationController-class.html
+
+8. https://api.flutter.dev/flutter/dart-core/Map/containsKey.html
